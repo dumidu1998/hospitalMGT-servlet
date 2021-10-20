@@ -38,6 +38,25 @@ public class DoctorDAO {
         return 0;
     }
 
+    public Doctor getADoctorById(String id) {
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM " + table + "  WHERE doctor_id = " + id + ";";
+        try {
+            ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            Doctor doctor = new Doctor(rs.getInt("doctor_id"), rs.getInt("branch_id"), rs.getString("name"),
+                    rs.getString("specialization"), rs.getString("sex"), rs.getString("nic"),
+                    rs.getString("education_qualification"), rs.getString("professional_qualification"),
+                    rs.getString("address"), rs.getString("mobile"), rs.getString("email"));
+            return doctor;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public ResultSet getAll() {
         PreparedStatement ps = null;
         String query = "SELECT * FROM user";

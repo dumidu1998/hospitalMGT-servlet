@@ -31,8 +31,24 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return 0;
+	}
+
+	public User getAUserById(String id) {
+		PreparedStatement ps = null;
+		String query = "SELECT * FROM " + table + "  WHERE user_id = " + id + ";";
+		try {
+			ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			User user = new User(rs.getInt("user_id"), rs.getInt("role"), rs.getString("username"),
+					rs.getString("email"), rs.getString("password"), rs.getInt("branch_id"));
+			return user;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public ResultSet getAll() {
@@ -83,7 +99,6 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return false;
-
 	}
 
 }
