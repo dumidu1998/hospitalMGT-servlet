@@ -117,7 +117,7 @@
     </div>
             <div class="main-content">
                 <div class="topic">
-                    <h2>This is Doctor Register</h2>
+                    <h2>Doctor Management</h2>
                 </div>
                 <div class="wrapper mt-lg-3">
                     
@@ -285,19 +285,19 @@
                                         <table class="table table-primary table-hover table-responsive">
                                             <thead>
                                               <tr class=" table-primary">
-                                                <th scope="col">Medicine</th>
-                                                <th scope="col">Unit Price</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Total Amount</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col">Specialization</th>
                                                 <th scope="col"></th>
                                               </tr>
                                             </thead>
                                             <tbody>
                                               <tr class="table-light"> 
-                                                <th scope="row">Med0012</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                                <th scope="row">Rajitha Priyankara</th>
+                                                <td>122, kandy</td>
+                                                <td>071256 6931</td>
+                                                <td>Pediatrician</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>

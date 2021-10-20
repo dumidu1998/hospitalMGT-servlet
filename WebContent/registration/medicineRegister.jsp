@@ -116,7 +116,7 @@
     </div>
             <div class="main-content">
                 <div class="topic">
-                    <h2>This is Medicine Register</h2>
+                    <h2> Medicine Management</h2>
                 </div>
                 <div class="wrapper mt-lg-3">       
                     <div class="formContainer">

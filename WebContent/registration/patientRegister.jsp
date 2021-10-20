@@ -115,7 +115,7 @@
     </div>
     <div class="main-content">
         <div class="topic">
-            <h2>This is Patient Register</h2>
+            <h2>Patient Management</h2>
         </div>
         <div class="wrapper mt-lg-3">
             <div class="formContainer ">
@@ -258,19 +258,19 @@
                                 <table class="table table-primary table-hover table-responsive">
                                     <thead>
                                       <tr class=" table-primary">
-                                        <th scope="col">Medicine</th>
-                                        <th scope="col">Unit Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Total Amount</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">NIC</th>
+                                        <th scope="col">Age</th>
+                                        <th scope="col">Contact No.</th>
                                         <th scope="col"></th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <tr class="table-light"> 
-                                        <th scope="row">Med0012</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <th scope="row">Kasun Bandara</th>
+                                        <td>951284567v</td>
+                                        <td>21</td>
+                                        <td>076 6344989</td>
                                         <td>
                                             <ul class="flexList">
                                                 <li> <button><i class="far fa-edit"></i></button></li>
@@ -278,106 +278,12 @@
                                             </ul>
                                         </td>
                                       </tr>
+                                      
                                       <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr><tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>
-                                            <ul class="flexList">
-                                                <li> <button><i class="far fa-edit"></i></button></li>
-                                                <li><button> <i class="far fa-trash-alt"></i></button></li>
-                                            </ul>
-                                        </td>
-                                      </tr>
-                                      <tr class="table-light">
-                                        <th scope="row">Med0012</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
+                                        <th scope="row">Kasun Bandara</th>
+                                        <td>951284567v</td>
+                                        <td>21</td>
+                                        <td>076 6344989</td>
                                         <td>
                                             <ul class="flexList">
                                                 <li> <button><i class="far fa-edit"></i></button></li>

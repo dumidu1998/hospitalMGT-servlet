@@ -116,7 +116,7 @@
             </div>
             <div class="main-content">
                 <div class="topic">
-                    <h2>This is User Registration</h2>
+                    <h2>User Management</h2>
                 </div>
                 <div class="wrapper mt-lg-3">
                     
@@ -185,19 +185,19 @@
                                         <table class="table table-primary table-hover table-responsive">
                                             <thead>
                                               <tr class=" table-primary">
-                                                <th scope="col">Medicine</th>
-                                                <th scope="col">Unit Price</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Total Amount</th>
+                                                <th scope="col">User Id</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Role</th>
+
                                                 <th scope="col"></th>
                                               </tr>
                                             </thead>
                                             <tbody>
                                               <tr class="table-light"> 
-                                                <th scope="row">Med0012</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                                <th scope="row">0012</th>
+                                                <td>Mark@gmail.com</td>
+                                                <td>Branch Admin</td>
+                                                
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>
@@ -206,10 +206,9 @@
                                                 </td>
                                               </tr>
                                               <tr class="table-light">
-                                                <th scope="row">Med0012</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
+                                                <th scope="row">0012</th>
+                                                <td>Mark@gmail.com</td>
+                                                <td>Branch Admin</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>
@@ -218,10 +217,9 @@
                                                 </td>
                                               </tr>
                                               <tr class="table-light">
-                                                <th scope="row">Med0012</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
+                                                <th scope="row">0012</th>
+                                                <td>Mark@gmail.com</td>
+                                                <td>Branch Admin</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>

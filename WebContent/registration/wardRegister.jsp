@@ -114,7 +114,7 @@
         </div>
     </div>
     <div class="main-content">
-               <div class="topic"><h2>This is Ward Register</h2></div>
+               <div class="topic"><h2>Ward Management</h2></div>
                 <div class="wrapper mt-lg-3">
                     
                     <div class="formContainer">
@@ -200,19 +200,19 @@
                                         <table class="table table-primary table-hover table-responsive">
                                             <thead>
                                               <tr class=" table-primary">
-                                                <th scope="col">Medicine</th>
-                                                <th scope="col">Unit Price</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Total Amount</th>
+                                                <th scope="col">Ward Name</th>
+                                                <th scope="col">No. of Beds</th>
+                                                <th scope="col">Head in Charge</th>
+                                                <th scope="col">Purpose</th>
                                                 <th scope="col"></th>
                                               </tr>
                                             </thead>
                                             <tbody>
                                               <tr class="table-light"> 
-                                                <th scope="row">Med0012</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                                <th scope="row">ICU</th>
+                                                <td>18</td>
+                                                <td>Jagath Kumara</td>
+                                                <td>ICU</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>
