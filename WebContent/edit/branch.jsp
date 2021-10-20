@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="model.Branch"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.BranchDAO"%>
 <%@page import="java.sql.Connection"%>
@@ -33,7 +34,7 @@
 	Conn dbconn = new Conn();
 	Connection conn = dbconn.get_connection();
 	BranchDAO branchDAO = new BranchDAO(conn);
-	ResultSet rs = branchDAO.getAll();
+	Branch branch = branchDAO.getABranchById(request.getParameter("id"));
 	%>
 	<div class="sidebar">
 		<div
@@ -145,9 +146,20 @@
 		</div>
 		<div class="wrapper mt-lg-3">
 			<div class="formContainer">
-				<form action="../branch" method="post">
+				<form action="../editbranch" method="post">
 					<div class="row centerCont">
-						
+						<div class="col col-lg-6 col-md-10 col-xs-11">
+							<div class="row centerCont">
+								<div class="col col-lg-3">
+									<label for="exampleFormControlInput1" class="form-label">Branch
+										ID</label>
+								</div>
+								<div class="col col-lg-7">
+									<input type="text" class="form-control" readonly="readonly" value="<%out.print(branch.getBranchId());%>"
+										id="exampleFormControlInput1" placeholder="" name="bid">
+								</div>
+							</div>
+						</div>
 						<div class="col col-lg-6 col-md-10 col-xs-11">
 							<div class="row centerCont">
 								<div class="col col-lg-3">
@@ -155,8 +167,8 @@
 										Name</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control"
-										id="exampleFormControlInput1" placeholder="" name="bname" required>
+									<input type="text" class="form-control" value="<%out.print(branch.getBranchName());%>"
+										id="exampleFormControlInput1" placeholder="" name="bname">
 								</div>
 							</div>
 						</div>
@@ -164,62 +176,10 @@
 
 					<div class="row centerCont">
 						<div class="d-grid gap-2 col-2 mx-auto pt-3">
-							<button class="btn btnSubmit btn-sm ">Create</button>
+							<button class="btn btnSubmit btn-sm ">Edit Branch</button>
 						</div>
 					</div>
 				</form>
-			</div>
-			<div class="tblContainer">
-				<div class="row centerCont">
-					<div class="col col-lg-11 col-md-10 col-xs-11">
-
-
-						<table class="table table-primary table-hover table-responsive">
-							<thead>
-								<tr class=" table-primary">
-									<th scope="col">Branch Id</th>
-									<th scope="col">Branch Name</th>
-
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<%
-								while (rs.next()) {
-								%>
-								<tr class="table-light">
-									<th scope="row"><%
-										out.println(rs.getInt("branch_id"));
-										%></th>
-									<td><%
-										out.println(rs.getString("branch_name"));
-										%></td>
-
-									<td>
-										<ul class="flexList">
-											<li>
-												<a
-												href="../edit/branch.jsp?id=<%out.println(rs.getInt("branch_id"));%>">
-													<button>
-														<i class="far fa-edit"></i>
-													</button>
-											</a>
-											</li>
-											<li><a
-												href="../branch?id=<%out.println(rs.getInt("branch_id"));%>">
-													<button>
-														<i class="far fa-trash-alt"></i>
-													</button></li>
-										</ul>
-									</td>
-								</tr>
-								<%} %>
-						</table>
-
-
-
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

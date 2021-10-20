@@ -24,9 +24,7 @@ public class UserDAO {
 			ps = connection.prepareStatement(query);
 			ps.executeUpdate();
 
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			return rs.getInt(1);
+			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -53,7 +51,7 @@ public class UserDAO {
 
 	public ResultSet getAll() {
 		PreparedStatement ps = null;
-		String query = "SELECT * FROM user";
+		String query = "SELECT * FROM user INNER JOIN branch ON user.branch_id=branch.branch_id";
 		try {
 			ps = connection.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();

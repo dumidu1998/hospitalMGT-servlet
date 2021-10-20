@@ -17,14 +17,12 @@ public class BranchDAO {
 
 	public int addData(Branch branch) {
 		PreparedStatement ps = null;
-		String query = "INSERT INTO branch (branch_id, branch_name) VALUES (NULL, '" + branch.getBranchName() + "'";
+		String query = "INSERT INTO branch (branch_id, branch_name) VALUES (NULL, '" + branch.getBranchName() + "')";
 		try {
 			ps = connection.prepareStatement(query);
 			ps.executeUpdate();
 
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			return rs.getInt(1);
+			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,15 +48,13 @@ public class BranchDAO {
 
 	public int updateUser(Branch branch) {
 		PreparedStatement ps = null;
-		String query = "UPDATE branch SET branch_name=" + branch.getBranchName() + " WHERE branch_id="
+		String query = "UPDATE branch SET branch_name='" + branch.getBranchName() + "' WHERE branch_id="
 				+ branch.getBranchId();
 		try {
 			ps = connection.prepareStatement(query);
 			ps.executeUpdate();
 
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			return rs.getInt(1);
+			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

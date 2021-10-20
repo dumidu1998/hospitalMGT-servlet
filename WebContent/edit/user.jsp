@@ -1,8 +1,11 @@
-<!doctype html>
+<%@page import="model.User"%>
+<%@page import="dao.UserDAO"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="dao.BranchDAO"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="servlets.Conn"%>
+<%@page import="dao.BranchDAO" %>
+
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -25,16 +28,18 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/hospital.css">
-<title>Hospital MGT</title>
+<title>HOSPITAL MGT</title>
 </head>
 
 <body class="colBg">
 <%
-	Conn dbconn = new Conn();
-	Connection conn = dbconn.get_connection();
-	BranchDAO branchDAO = new BranchDAO(conn);
-	ResultSet rs = branchDAO.getAll();
-	%>
+Conn dbconn= new Conn();
+Connection conn = dbconn.get_connection();
+BranchDAO branchDAO = new BranchDAO(conn);
+ResultSet rs = branchDAO.getAll();
+UserDAO users = new UserDAO(conn);
+User sUser = users.getAUserById(request.getParameter("id"));
+%>
 	<div class="sidebar">
 		<div
 			class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -55,19 +60,19 @@
 				</a>
 					<ul class="collapse show nav flex-column ms-1" id="submenu1"
 						data-bs-parent="#menu">
-						<li class="w-100"><a href="patientRegister.jsp"
+						<li class="w-100"><a href="../registration/patientRegister.jsp"
 							class="nav-link px-0"> <span class="d-none d-sm-inline">Patient
 									Management</span>
 						</a></li>
-						<li><a href="doctorRegister.jsp" class="nav-link px-0"> <span
+						<li><a href="../registration/doctorRegister.jsp" class="nav-link px-0"> <span
 								class="d-none d-sm-inline">Doctor Management</span></a></li>
-						<li><a href="wardRegister.jsp" class="nav-link px-0"> <span
+						<li><a href="../registration/wardRegister.jsp" class="nav-link px-0"> <span
 								class="d-none d-sm-inline">Ward Management</span></a></li>
-						<li><a href="branchRegister.jsp" class="nav-link px-0"> <span
+						<li><a href="../registration/branchRegister.jsp" class="nav-link px-0"> <span
 								class="d-none d-sm-inline">Branch Management</span></a></li>
-						<li><a href="userRegister.jsp" class="nav-link px-0"> <span
+						<li><a href="../registration/userRegister.jsp" class="nav-link px-0"> <span
 								class="d-none d-sm-inline">User Management</span></a></li>
-						<li><a href="medicineRegister.jsp" class="nav-link px-0">
+						<li><a href="../registration/medicineRegister.jsp" class="nav-link px-0">
 								<span class="d-none d-sm-inline">Medicine Management</span>
 						</a></li>
 					</ul></li>
@@ -141,86 +146,82 @@
 	</div>
 	<div class="main-content">
 		<div class="topic">
-			<h2>Branch Management</h2>
+			<h2>User Management</h2>
 		</div>
 		<div class="wrapper mt-lg-3">
+
 			<div class="formContainer">
-				<form action="../branch" method="post">
-					<div class="row centerCont">
-						
-						<div class="col col-lg-6 col-md-10 col-xs-11">
-							<div class="row centerCont">
-								<div class="col col-lg-3">
-									<label for="exampleFormControlInput1" class="form-label">Branch
-										Name</label>
-								</div>
-								<div class="col col-lg-7">
-									<input type="text" class="form-control"
-										id="exampleFormControlInput1" placeholder="" name="bname" required>
-								</div>
+			<form action="../edituser" method="post">
+			<input type="hidden" name="userid" value="<%out.print(request.getParameter("id")); %>" />
+				<div class="row centerCont">
+					<div class="col col-lg-6 col-md-10 col-xs-11">
+						<div class="row centerCont">
+							<div class="col col-lg-3">
+								<label for="exampleFormControlInput1" class="form-label">Branch</label>
+							</div>
+							
+							<div class="col col-lg-7">
+								<select class="form-select" aria-label="Default select example" name="branch" required >
+									<option selected hidden value="">Select a Branch</option>
+								<% while (rs.next()){
+									%>
+									<option value=<%out.println(rs.getInt("branch_id")); %>><%out.println(rs.getString("branch_name")); %></option>
+									<%
+								} %>
+									
+								</select>
 							</div>
 						</div>
 					</div>
-
-					<div class="row centerCont">
-						<div class="d-grid gap-2 col-2 mx-auto pt-3">
-							<button class="btn btnSubmit btn-sm ">Create</button>
+					<div class="col col-lg-6 col-md-10 col-xs-11">
+						<div class="row centerCont">
+							<div class="col col-lg-3">
+								<label for="exampleFormControlInput1" class="form-label">Email</label>
+							</div>
+							<div class="col col-lg-7">
+								<input type="email" name="email" class="form-control" required value="<%out.print(sUser.getEmail()); %>"
+									id="exampleFormControlInput1" placeholder="">
+							</div>
 						</div>
 					</div>
-				</form>
-			</div>
-			<div class="tblContainer">
+				</div>
 				<div class="row centerCont">
-					<div class="col col-lg-11 col-md-10 col-xs-11">
-
-
-						<table class="table table-primary table-hover table-responsive">
-							<thead>
-								<tr class=" table-primary">
-									<th scope="col">Branch Id</th>
-									<th scope="col">Branch Name</th>
-
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<%
-								while (rs.next()) {
-								%>
-								<tr class="table-light">
-									<th scope="row"><%
-										out.println(rs.getInt("branch_id"));
-										%></th>
-									<td><%
-										out.println(rs.getString("branch_name"));
-										%></td>
-
-									<td>
-										<ul class="flexList">
-											<li>
-												<a
-												href="../edit/branch.jsp?id=<%out.println(rs.getInt("branch_id"));%>">
-													<button>
-														<i class="far fa-edit"></i>
-													</button>
-											</a>
-											</li>
-											<li><a
-												href="../branch?id=<%out.println(rs.getInt("branch_id"));%>">
-													<button>
-														<i class="far fa-trash-alt"></i>
-													</button></li>
-										</ul>
-									</td>
-								</tr>
-								<%} %>
-						</table>
-
-
-
+					<div class="col col-lg-6 col-md-10 col-xs-11">
+						<div class="row centerCont">
+							<div class="col col-lg-3">
+								<label for="exampleFormControlInput1" class="form-label">Password</label>
+							</div>
+							<div class="col col-lg-7">
+								<input type="password" class="form-control" required name="password" value="<%out.print(sUser.getPassword()); %>" pattern="{6,}" title="Password Should be minimum 6 characters"
+									id="exampleFormControlInput1" placeholder="">
+							</div>
+						</div>
+					</div>
+					<div class="col col-lg-6 col-md-10 col-xs-11">
+						<div class="row centerCont">
+							<div class="col col-lg-3">
+								<label for="exampleFormControlInput1" class="form-label">Role</label>
+							</div>
+							<div class="col col-lg-7">
+								<select class="form-select" aria-label="Default select example" required name="role">
+									<option selected hidden value="">Select the Role</option>
+									<option value="1">Admin</option>
+									<option value="2">Branch Manager</option>
+									<option value="3">Service Desk Manager</option>
+								</select>
+							</div>
+						</div>
 					</div>
 				</div>
+
+				<div class="row centerCont">
+					<div class="d-grid gap-2 col-2 mx-auto pt-3">
+						<button class="btn btnSubmit btn-sm ">Edit User</button>
+					</div>
+				</div>
+				</form>
 			</div>
+			
 		</div>
 	</div>
 
@@ -229,8 +230,7 @@
 		<!-- Copyright -->
 		<div class="text-center p-3"
 			style="background-color: rgba(0, 0, 0, 0.2);">
-			Â© 2021 Copyright: <a class="text-dark" href="https://ddd.lk/">Hospital
-				MGT</a>
+			© 2021 Copyright: <a class="text-dark" href="https://dddd.xyz/">HOSPITAL MGT</a>
 		</div>
 		<!-- Copyright -->
 	</footer>
