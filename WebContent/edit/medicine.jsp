@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="model.Medicine"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.MedicineDAO"%>
 <%@page import="java.sql.Connection"%>
@@ -33,7 +34,7 @@
 	Conn dbconn = new Conn();
 	Connection conn = dbconn.get_connection();
 	MedicineDAO medDAo = new MedicineDAO(conn);
-	ResultSet meds = medDAo.getAll();
+	Medicine med = medDAo.getAUserById(request.getParameter("id"));
 	%>
 	<div class="sidebar">
 		<div
@@ -145,7 +146,8 @@
 		</div>
 		<div class="wrapper mt-lg-3">
 			<div class="formContainer">
-			<form action="../medicine" method="POST">
+			<form action="../editmedicine" method="POST">
+			
 				<div class="row centerCont">
 					<div class="col col-lg-6 col-md-10 col-xs-11">
 						<div class="row centerCont">
@@ -155,7 +157,7 @@
 							</div>
 							<div class="col col-lg-7">
 								<input type="text" class="form-control"
-									id="exampleFormControlInput1" readonly="readonly"
+									id="exampleFormControlInput1" readonly="readonly" name="mid" value="<%out.print(med.getMedicineId());%>"
 									placeholder="12">
 							</div>
 						</div>
@@ -168,7 +170,7 @@
 							</div>
 							<div class="col col-lg-7">
 								<input type="text" class="form-control"
-									id="exampleFormControlInput1" placeholder="" name="bname"
+									id="exampleFormControlInput1" placeholder="" name="bname" value="<%out.print(med.getBrandName());%>"
 									required>
 							</div>
 						</div>
@@ -183,7 +185,7 @@
 							</div>
 							<div class="col col-lg-7">
 								<input type="text" class="form-control"
-									id="exampleFormControlInput1" placeholder="" name="mname"
+									id="exampleFormControlInput1" placeholder="" name="mname" value="<%out.print(med.getMedicinename());%>"
 									required>
 							</div>
 
@@ -217,7 +219,7 @@
 							</div>
 							<div class="col col-lg-7">
 								<input type="number" class="form-control"
-									id="exampleFormControlInput1" placeholder="" name="uprice" min="1"
+									id="exampleFormControlInput1" min="1" placeholder="" name="uprice" value="<%out.print(med.getPrice());%>"
 									required>
 							</div>
 						</div>
@@ -229,7 +231,7 @@
 							</div>
 
 							<div class="col col-lg-7">
-								<textarea rows="5" cols="" class="form-control" name="remark"></textarea>
+								<textarea rows="5" cols="" class="form-control" name="remark" ><%out.print(med.getRemark());%></textarea>
 							</div>
 
 						</div>
@@ -237,71 +239,11 @@
 				</div>
 				<div class="row centerCont">
 					<div class="d-grid gap-2 col-2 mx-auto pt-3">
-						<button  class="btn btnSubmit btn-sm ">Add
+						<button  class="btn btnSubmit btn-sm ">Edit
 							Medicine</button>
 					</div>
 				</div>
 				</form>
-			</div>
-			<div class="tblContainer">
-				<div class="row centerCont ">
-					<div class="col col-lg-11 col-md-10 col-xs-11">
-
-
-						<table class="table table-primary table-hover table-responsive">
-							<thead>
-								<tr class=" table-primary">
-									<th scope="col">Medicine Name</th>
-									<th scope="col">Brand Name</th>
-									<th scope="col">Unit Price</th>
-									<th scope="col">Type</th>
-									<th scope="col">Remark</th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<%
-								while (meds.next()) {
-								%>
-								<tr class="table-light">
-									<th scope="row"><%
-										out.println(meds.getString("medicine_name"));
-										%></th>
-									<td><%
-										out.println(meds.getString("brand_name"));
-										%></td>
-									<td><%
-										out.println(meds.getString("price"));
-										%></td>
-									<td><%
-										out.println(meds.getString("type"));
-										%></td>
-									<td><%
-										out.println(meds.getString("remark"));
-										%></td>
-									<td>
-										<ul class="flexList">
-											<li><a
-												href="../edit/medicine.jsp?id=<%out.println(meds.getInt("medicine_id"));%>">
-													<button>
-														<i class="far fa-edit"></i>
-													</button>
-											</a></li>
-											<li><a
-												href="../medicine?id=<%out.println(meds.getInt("medicine_id"));%>">
-													<button>
-														<i class="far fa-trash-alt"></i>
-													</button></li>
-											</a>
-										</ul>
-									</td>
-								</tr>
-								<%
-								}
-								%>
-						</table>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
