@@ -1,0 +1,284 @@
+.colBg{
+    background: #e4e0e0 !important;
+}
+.pg1{
+background-image: url(https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg);
+}
+.pg2{
+    background-image: url(https://www.motortrend.com/uploads/sites/5/2020/10/2021-SSC-Tuatara-Reruns-Record-Car-Front-3.4.jpg?fit=around%7C875:492);
+}
+.topic{
+    position: absolute;
+    top: 10px;
+    h2{
+        color: #1a213a;
+        text-align: start;
+        margin: 0 0 0 20px;
+    }
+}
+
+.wrapper{
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    background: #e4e0e0b9;
+     
+}
+.loginContainer{
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow:  9px 9px 28px #d1d1d1,
+                -9px -9px 28px #e9e9e9;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding-top: 20px;
+    padding-bottom:20px;
+    margin-top: 40px;
+    .form-select,
+    .form-control {
+        font-size: 14px;
+        font-weight: 600;
+        color: #151414;
+        background: #e6e2e2;
+        width: 100%;
+        // max-width: 390px;
+        // margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+}
+.loginBox,
+.loginTxtBox{
+    max-width: 300px;
+    padding: 50px 20px 50px 0px;
+}
+.loginBox{
+    text-align: center;
+    }
+    h5{
+        margin-bottom: 20px;
+    }
+
+.btnlogin{
+    padding-left: 30px;
+    padding-right: 30px;
+   
+    background: #1a213a;
+    color: #fff;
+    border-radius: 20px;
+    padding-bottom:3px;
+    &:hover{
+        background: #212a4a;
+    color: #fff;
+    }
+
+}
+.formContainer{
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow:  9px 9px 28px #d1d1d1,
+                -9px -9px 28px #e9e9e9;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding-top: 20px;
+    padding-bottom:20px;
+    margin-top: 40px;
+    
+    label{
+        font-weight: 600;
+        font-size: 14px;
+        color: rgb(46, 45, 45);
+   
+    }
+    .form-select,
+    .form-control {
+        font-size: 14px;
+        font-weight: 600;
+        color: #373737;
+        background: #e6e2e2;
+        width: 100%;
+        // max-width: 390px;
+        // margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+}
+.tblContainer{
+    
+    width: 100%;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow:  9px 9px 28px #d1d1d1,
+                -9px -9px 28px #e9e9e9;
+    justify-content: center !important;
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding-top: 20px;
+    padding-bottom:20px;
+    margin-top: 40px;
+    tr{
+        text-align: center;
+        td{
+            padding-top: 10px;
+        }
+    }
+}
+.flexBox{
+    display: flex;
+    justify-content: space-around;
+}
+.form-select {
+    border-radius: 10px !important;
+}
+.sidebar{
+   
+    top: 0;
+    width:240px;
+    position: fixed;
+    height: 100%;
+    background: #1a213a;
+    transition: width 300ms;
+    // box-shadow: 0px 2px 4px 0 $shadow-color;
+    z-index: 100;
+    
+    .nav-link {
+        display: block;
+        padding: .5rem .7rem;
+        color: #d3d4d5;
+        text-decoration: none;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+        &:hover{
+            color: #ffffff;
+        }
+        &:active{
+            color: #373737;
+        }
+
+    }
+    #submenu1,
+#submenu2,
+#submenu3{
+    padding-left:  1rem;
+    .nav-link {
+        font-size: 14px;
+        display: block;
+        padding: .5rem .7rem;
+        color: #88b4ff;
+        text-decoration: none;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+        &:hover{
+            color: #ffffff;
+        }
+        &:active{
+            color: #373737;
+        }
+    }
+}
+}
+.main-content{
+    margin-left: 240px;
+    transition: margin-left 300ms;
+}
+
+.btnSubmit{
+    margin-top: 5px;
+    background: #1a213a;
+    color: #e4e0e0;
+    border-radius:10px;
+    &:hover{
+        color: #ffffff;
+    }
+}
+.centerCont{
+    justify-content: center !important;
+    margin-left: auto;
+    margin-right: auto;
+margin-top:5px;
+}
+
+//   @media only screen and (min-width: 768px){
+    
+//     .sidebar{
+//         width: 70px;
+//     }
+//     .main-content{
+//         margin-left: 70px;
+//     }
+// }
+.flexList{
+    display: flex;
+    list-style: none;
+    li{
+        // padding-left: 5px;
+        // padding-right: 5px;
+        button{
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            width:40px;
+            height:40px;
+            
+            justify-content: center;
+            &:hover{
+                background: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(30px);
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px){
+    .sidebar{
+        width: 70px;
+        .nav-link{
+            span{
+                display: none !important;
+            }
+        }
+        
+    }
+
+    .main-content{
+        margin-left: 70px;
+        
+    }
+    
+}
+
+
+@media only screen and (max-width: 900px){
+    .sidebar{
+        width: 70px;
+        .nav-link{
+            span{
+                display: none !important;
+            }
+        }
+        
+    }
+
+    .main-content{
+        margin-left: 70px;
+        
+    }
+}
+
+    
+    
+.left-text{
+    text-align: left !important;
+    padding-bottom: 10px;
+    label{
+        color: #1a213a;
+        font-size: 14px;
+    }
+}
