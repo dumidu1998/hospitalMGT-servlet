@@ -171,10 +171,8 @@
                             </div>
                         </div>
                         <div class="row centerCont">
-                            <div class="col col-lg-6 col-md-10 col-xs-11">
-                                
-                            </div>
-                            <div class="col col-lg-6 col-md-10 col-xs-11">
+                            
+                            <div class="col col-lg-12 col-md-10 col-xs-11">
                                 <div class="row centerCont">
                                     <div class="col col-lg-3">
                                         <label for="exampleFormControlInput1" class="form-label">Remarks</label>
