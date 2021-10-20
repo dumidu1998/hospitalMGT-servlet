@@ -188,16 +188,17 @@
                                                 <th scope="col">User Id</th>
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Role</th>
+                                                <th scope="col">Branch</th>
 
                                                 <th scope="col"></th>
                                               </tr>
                                             </thead>
                                             <tbody>
                                               <tr class="table-light"> 
-                                                <th scope="row">0012</th>
+                                                <th scope="row">0011</th>
                                                 <td>Mark@gmail.com</td>
                                                 <td>Branch Admin</td>
-                                                
+                                                <td>Kandy</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>
@@ -209,6 +210,7 @@
                                                 <th scope="row">0012</th>
                                                 <td>Mark@gmail.com</td>
                                                 <td>Branch Admin</td>
+                                                <td>Kandy</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>
@@ -217,9 +219,10 @@
                                                 </td>
                                               </tr>
                                               <tr class="table-light">
-                                                <th scope="row">0012</th>
+                                                <th scope="row">0013</th>
                                                 <td>Mark@gmail.com</td>
                                                 <td>Branch Admin</td>
+                                                <td>Kandy</td>
                                                 <td>
                                                     <ul class="flexList">
                                                         <li> <button><i class="far fa-edit"></i></button></li>
