@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="main-content">
-                <div class="topic"><h2>This is Hospitalization</h2></div>
+                <div class="topic"><h2>Hospitalization</h2></div>
                 <div class="wrapper mt-lg-3">
                     
                     <div class="formContainer">

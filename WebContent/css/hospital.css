@@ -73,6 +73,10 @@ h5 {
   margin-bottom: 20px;
 }
 
+.borTop {
+  border-top: 1px solid #14131c;
+}
+
 .btnlogin {
   padding-left: 30px;
   padding-right: 30px;

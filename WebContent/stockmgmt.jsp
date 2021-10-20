@@ -116,7 +116,7 @@
             </div>
             <div class="main-content">
                <div class="topic">
-                <h2>This is Stock</h2>
+                <h2>Stock Management</hh2>
                </div>
                 <div class="wrapper mt-lg-3">
                    

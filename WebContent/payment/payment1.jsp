@@ -116,7 +116,7 @@
             </div>
             <div class="main-content">
                 <div class="topic">
-                    <h2>This is Payment 1</h2>
+                    <h2>Bill Payment</h2>
                 </div>
                 <div class="wrapper mt-lg-3">
                     
@@ -171,21 +171,63 @@
                             </div>
                         </div>
                         <div class="row centerCont">
-                            <div class="col col-lg-6 col-md-10 col-xs-11">
-                                
-                            </div>
-                            <div class="col col-lg-6 col-md-10 col-xs-11">
+                            
+                            <div class="col col-lg-12 col-md-10 col-xs-11">
                                 <div class="row centerCont">
-                                    <div class="col col-lg-3">
+                                    <div class="col col-lg-2">
                                         <label for="exampleFormControlInput1" class="form-label">Remarks</label>
                                     </div>
-                                    <div class="col col-lg-7">
+                                    <div class="col col-lg-9">
                                         <textarea rows="4" cols="" class="form-control"></textarea> 
                                     </div>
                                     
                                 </div>
                             </div>
                             
+                        </div>
+                        <div class="row centerCont mt-5">
+                            <div class="col col-lg-11 col-md-10 col-xs-11 borTop">
+                                <div class="row centerCont mt-3">
+                                    <div class="col col-lg-5">
+                                        <h4>Medicines Issued</h4>
+                                    </div>
+                                    <div class="col col-lg-7">
+                                         
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                          
+                        </div>
+                        
+                        <div class="row centerCont mt-3">
+                            <div class="col col-lg-5 col-md-5 col-xs-11">
+                                <div class="row centerCont">
+                                    <div class="col col-lg-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Medicine</label>
+                                    </div>
+                                    <div class="col col-lg-6">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-5 col-md-5 col-xs-11">
+                                <div class="row centerCont">
+                                    <div class="col col-lg-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+                                    </div>
+                                    <div class="col col-lg-6">
+                                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-xs-11">
+                                <div class="row centerCont">
+                                   <div class="mx-auto">
+                                            <button type="button" class="btn btnSubmit btn-sm ">Add</button>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row centerCont">
                             <div class="col col-lg-11 col-md-10 col-xs-11">
@@ -243,8 +285,8 @@
                                         
                                     </div>
                                     <div class="col col-lg-3">
-                                        <div class="d-grid gap-2 col-12 mx-auto pt-3">
-                                            <button type="button" class="btn btnSubmit btn-sm ">Create</button>
+                                        <div class="d-grid gap-2 col-12 mx-auto ">
+                                            <button type="button" class="btn btnSubmit btn-sm ">Pay</button>
                                         </div>
                                     </div>
                                 </div>

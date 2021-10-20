@@ -34,7 +34,7 @@
                                 <h5>Login</h5>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
                                 <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
-                                <div  class="left-text"><label for=""><a href=""> Forgot Password?</a></label></div>
+                               
                                 <div  class="left-text">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="flexcheckboxDefault" id="flexcheckboxDefault1">

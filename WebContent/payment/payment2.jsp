@@ -116,7 +116,7 @@
             </div>
             <div class="main-content">
                 <div class="topic">
-                    <h2>This is Payment 2</h2>
+                    <h2>Invoice</h2>
                 </div>
                 <div class="wrapper mt-lg-3">
                     
