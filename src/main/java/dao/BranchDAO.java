@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Branch;
-import model.User;
 
 public class BranchDAO {
 	public String table = "branch";
@@ -18,7 +17,7 @@ public class BranchDAO {
 
 	public int addData(Branch branch) {
 		PreparedStatement ps = null;
-		String query = "INSERT INTO branch (branch_id, branch_name) VALUES (NULL, '"+branch.getBranchName()+"'";
+		String query = "INSERT INTO branch (branch_id, branch_name) VALUES (NULL, '" + branch.getBranchName() + "'";
 		try {
 			ps = connection.prepareStatement(query);
 			ps.executeUpdate();
@@ -51,7 +50,8 @@ public class BranchDAO {
 
 	public int updateUser(Branch branch) {
 		PreparedStatement ps = null;
-		String query = "UPDATE  branch SET branch_name=" + branch.getBranchName()+ " WHERE branch_id=" + branch.getBranchId();
+		String query = "UPDATE  branch SET branch_name=" + branch.getBranchName() + " WHERE branch_id="
+				+ branch.getBranchId();
 		try {
 			ps = connection.prepareStatement(query);
 			ps.executeUpdate();
@@ -65,6 +65,22 @@ public class BranchDAO {
 		}
 
 		return 0;
+	}
+
+	public Branch getABranchById(String id) {
+		PreparedStatement ps = null;
+		String query = "SELECT * FROM " + table + "  WHERE branch_id = " + id + ";";
+		try {
+			ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			Branch branch = new Branch(rs.getInt("branch_id"), rs.getString("branch_name"));
+			return branch;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean del(String id) {
