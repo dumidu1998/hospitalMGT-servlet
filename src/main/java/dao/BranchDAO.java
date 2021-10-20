@@ -50,7 +50,7 @@ public class BranchDAO {
 
 	public int updateUser(Branch branch) {
 		PreparedStatement ps = null;
-		String query = "UPDATE  branch SET branch_name=" + branch.getBranchName() + " WHERE branch_id="
+		String query = "UPDATE branch SET branch_name=" + branch.getBranchName() + " WHERE branch_id="
 				+ branch.getBranchId();
 		try {
 			ps = connection.prepareStatement(query);

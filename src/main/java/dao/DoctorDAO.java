@@ -59,7 +59,7 @@ public class DoctorDAO {
 
     public ResultSet getAll() {
         PreparedStatement ps = null;
-        String query = "SELECT * FROM user";
+        String query = "SELECT * FROM doctor";
         try {
             ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
