@@ -1,4 +1,9 @@
 <!doctype html>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="dao.DoctorDAO"%>
+<%@page import="dao.BranchDAO"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="servlets.Conn"%>
 <html lang="en">
 
 <head>
@@ -14,11 +19,23 @@
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/hospital.css">
-    <title>Com Bank</title>
+    <title>Hospital MGT</title>
 </head>
 
 <body class="colBg">
-    
+    <%
+	Conn dbconn = new Conn();
+	Connection conn = dbconn.get_connection();
+	BranchDAO branchDAO = new BranchDAO(conn);
+	DoctorDAO doctorDAO = new DoctorDAO(conn);
+	ResultSet rsDoctors = null;
+	if ((Integer) session.getAttribute("role") == 1) {
+		rsDoctors = doctorDAO.getAll();
+	} else {
+		rsDoctors = doctorDAO.getAllbyBranch((Integer) session.getAttribute("branch_id"));
+	}
+	ResultSet rs = branchDAO.getAll();
+	%>
     <div class="sidebar">
         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <a href="../home.jsp" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -126,10 +143,26 @@
                             <div class="col col-lg-6 col-md-10 col-xs-11">
                                 <div class="row centerCont">
                                     <div class="col col-lg-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Doctor ID</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Branch</label>
                                     </div>
                                     <div class="col col-lg-7">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                        <select class="form-select" aria-label="Default select example"
+										name="branch" required>
+										<option selected hidden value="">Select a Branch</option>
+										<%
+										while (rs.next()) {
+										%>
+										<option value=<%out.println(rs.getInt("branch_id"));%>
+											<%if (rs.getInt("branch_id") == (Integer) session.getAttribute("branch_id"))
+	out.print("selected");%>>
+											<%
+											out.println(rs.getString("branch_name"));
+											%>
+										</option>
+										<%
+										}
+										%>
+									</select>
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +460,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2021 Copyright:
-            <a class="text-dark" href="https://combank.lk/">Com Bank</a>
+            <a class="text-dark" href="https://122.lk/">Hospital MGT</a>
         </div>
         <!-- Copyright -->
     </footer>
