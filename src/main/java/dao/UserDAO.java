@@ -63,6 +63,21 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public ResultSet getAllbyBranch(int idd) {
+		PreparedStatement ps = null;
+		String query = "SELECT * FROM user INNER JOIN branch ON user.branch_id=branch.branch_id WHERE user.branch_id="+idd;
+		try {
+			ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+
+			return rs;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public int updateUser(User user) {
 		PreparedStatement ps = null;

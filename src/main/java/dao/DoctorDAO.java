@@ -71,6 +71,21 @@ public class DoctorDAO {
         }
         return null;
     }
+    
+    public ResultSet getAllbyBranch(int idd) {
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM doctor WHERE branch_id="+idd;
+        try {
+            ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public int updateUser(Doctor doctor) {
         PreparedStatement ps = null;

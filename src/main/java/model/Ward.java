@@ -8,14 +8,24 @@ public class Ward {
 	private String purpose;
 	private int beds;
 	private float rate;
+	private int branch;
 
-	public Ward(int wardId, String name, int inchargeDoctorid, String purpose, int beds, float rate) {
+	public Ward(int wardId, String name, int inchargeDoctorid, String purpose, int beds, float rate,int branch) {
 		this.wardId = wardId;
 		this.name = name;
 		this.inchargeDoctorid = inchargeDoctorid;
 		this.purpose = purpose;
 		this.beds = beds;
 		this.rate = rate;
+		this.branch=branch;
+	}
+
+	public int getBranch() {
+		return branch;
+	}
+
+	public void setBranch(int branch) {
+		this.branch = branch;
 	}
 
 	public int getWardId() {

@@ -13,7 +13,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/hospital.css">
-    <title>Com Bank</title>
+    <title>HOSPITAL MGT</title>
 </head>
 
 <body class="colBg">
@@ -307,7 +307,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2021 Copyright:
-            <a class="text-dark" href="https://combank.lk/">Com Bank</a>
+            <a class="text-dark" href="https://bna.lk/">HOSPITAL MGT</a>
         </div>
         <!-- Copyright -->
     </footer>

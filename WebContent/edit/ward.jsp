@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="model.Ward"%>
 <%@page import="dao.DoctorDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.WardDAO"%>
@@ -38,12 +39,7 @@
 	WardDAO wards = new WardDAO(conn);
 	DoctorDAO doctorDAO = new DoctorDAO(conn);
 	ResultSet rs21 = doctorDAO.getAllbyBranch((Integer) session.getAttribute("branch_id"));
-	ResultSet rsWards = null;
-	if ((Integer) session.getAttribute("role") == 1) {
-		rsWards = wards.getAll();
-	} else {
-		rsWards = wards.getAllbyBranch((Integer) session.getAttribute("branch_id"));
-	}
+	Ward ward = wards.getAUserById(request.getParameter("id"));
 	ResultSet rs = branchDAO.getAll();
 	%>
 	<div class="sidebar">
@@ -157,7 +153,8 @@
 		<div class="wrapper mt-lg-3">
 
 			<div class="formContainer">
-				<form action="../ward" method="POST">
+				<form action="../editward" method="POST">
+				<input type="hidden" name="wardid" value="<%out.print(request.getParameter("id")); %>" />
 					<div class="row centerCont">
 						<div class="col col-lg-6 col-md-10 col-xs-11">
 							<div class="row centerCont">
@@ -193,6 +190,7 @@
 								</div>
 								<div class="col col-lg-7">
 									<input type="text" class="form-control" name="wname" required
+										value="<%out.print(ward.getName());%>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -207,6 +205,7 @@
 								</div>
 								<div class="col col-lg-7">
 									<input type="number" class="form-control" name="beds" required
+										value="<%out.print(ward.getBeds());%>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -245,6 +244,7 @@
 								</div>
 								<div class="col col-lg-7">
 									<input type="text" class="form-control" name="purpose" required
+										value="<%out.print(ward.getPurpose());%>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -257,8 +257,8 @@
 								</div>
 								<div class="col col-lg-7">
 									<input type="number" step="0.1" class="form-control"
-										name="rate" required id="exampleFormControlInput1"
-										placeholder="">
+										value="<%out.print(ward.getRate());%>" name="rate" required
+										id="exampleFormControlInput1" placeholder="">
 								</div>
 
 							</div>
@@ -266,92 +266,10 @@
 					</div>
 					<div class="row centerCont">
 						<div class="d-grid gap-2 col-2 mx-auto pt-3">
-							<button class="btn btnSubmit btn-sm ">Add Ward</button>
+							<button class="btn btnSubmit btn-sm ">Update Ward</button>
 						</div>
 					</div>
 				</form>
-			</div>
-			<div class="tblContainer">
-				<div class="row centerCont">
-					<div class="col col-lg-11 col-md-10 col-xs-11">
-
-
-						<table class="table table-primary table-hover table-responsive">
-							<thead>
-								<tr class=" table-primary">
-									<th scope="col">Ward Name</th>
-									<th scope="col">No. of Beds</th>
-									<th scope="col">Rate</th>
-									<th scope="col">Head in Charge</th>
-									<th scope="col">Purpose</th>
-									<th scope="col">Branch</th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-								while (rsWards.next()) {
-								%>
-								<tr class="table-light">
-									<th scope="row">
-										<%
-										out.println(rsWards.getString("name"));
-										%>
-									</th>
-									<td>
-										<%
-										out.println(rsWards.getInt("beds"));
-										%>
-									</td>
-									<td>
-										<%
-										out.println(rsWards.getFloat("rate"));
-										%>
-									</td>
-									<td>
-										<%
-										out.println(rsWards.getString("dname"));
-										%>
-									</td>
-									<td>
-										<%
-										out.println(rsWards.getString("purpose"));
-										%>
-									</td>
-									<td>
-										<%
-										out.println(rsWards.getString("branch_name"));
-										%>
-									</td>
-									<td>
-										<ul class="flexList">
-											<li><a
-												href="../edit/ward.jsp?id=<%out.println(rsWards.getInt("ward_id"));%>">
-													<button
-														<%if ((Integer) session.getAttribute("role") == 3)
-	out.print("disabled");%>>
-														<i class="far fa-edit"></i>
-													</button>
-											</a></li>
-											<li><a href="../ward?id=<% out.println(rsWards.getInt("ward_id")); %>" >
-													<button
-														<%if ((Integer) session.getAttribute("role") == 3)out.print("disabled");%>>
-														<i class="far fa-trash-alt"></i>
-													</button></li>
-											</a>
-										</ul>
-									</td>
-								</tr>
-								<%
-								}
-								%>
-							
-						</table>
-
-
-
-					</div>
-				</div>
 			</div>
 		</div>
 

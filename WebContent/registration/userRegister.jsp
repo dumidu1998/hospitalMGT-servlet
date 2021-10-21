@@ -3,7 +3,9 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="servlets.Conn"%>
 <%@page import="dao.BranchDAO"%>
-
+<%
+if ((Integer) session.getAttribute("role") == 2)
+%>
 <!doctype html>
 <html lang="en">
 
@@ -36,7 +38,12 @@
 	Connection conn = dbconn.get_connection();
 	BranchDAO branchDAO = new BranchDAO(conn);
 	UserDAO users = new UserDAO(conn);
-	ResultSet rsUsers = users.getAll();
+	ResultSet rsUsers = null;
+	if ((Integer) session.getAttribute("role") == 1) {
+		rsUsers = users.getAll();
+	} else {
+		rsUsers = users.getAllbyBranch((Integer) session.getAttribute("branch_id"));
+	}
 	ResultSet rs = branchDAO.getAll();
 	%>
 	<div class="sidebar">
@@ -223,7 +230,10 @@
 
 					<div class="row centerCont">
 						<div class="d-grid gap-2 col-2 mx-auto pt-3">
-							<button class="btn btnSubmit btn-sm ">Create User</button>
+							<button class="btn btnSubmit btn-sm "
+								<%if ((Integer) session.getAttribute("role") == 3)
+	out.print("disabled");%>>Create
+								User</button>
 						</div>
 					</div>
 				</form>
@@ -273,13 +283,17 @@
 										<ul class="flexList">
 											<li><a
 												href="../edit/user.jsp?id=<%out.println(rsUsers.getInt("user_id"));%>">
-													<button>
+													<button
+														<%if ((Integer) session.getAttribute("role") == 3)
+	out.print("disabled");%>>
 														<i class="far fa-edit"></i>
 													</button>
 											</a></li>
 											<li><a
 												href="../AddUser?id=<%out.println(rsUsers.getInt("user_id"));%>">
-													<button>
+													<button
+														<%if ((Integer) session.getAttribute("role") == 3)
+	out.print("disabled");%>>
 														<i class="far fa-trash-alt"></i>
 													</button></li>
 											</a>
