@@ -27,9 +27,7 @@ public class DoctorDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,7 +57,7 @@ public class DoctorDAO {
 
     public ResultSet getAll() {
         PreparedStatement ps = null;
-        String query = "SELECT * FROM doctor";
+        String query = "SELECT * FROM doctor d INNER JOIN branch b ON b.branch_id=d.branch_id";
         try {
             ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -74,7 +72,7 @@ public class DoctorDAO {
     
     public ResultSet getAllbyBranch(int idd) {
         PreparedStatement ps = null;
-        String query = "SELECT * FROM doctor WHERE branch_id="+idd;
+        String query = "SELECT * FROM doctor d INNER JOIN branch b ON b.branch_id=d.branch_id WHERE d.branch_id="+idd;
         try {
             ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -90,18 +88,16 @@ public class DoctorDAO {
     public int updateUser(Doctor doctor) {
         PreparedStatement ps = null;
         String query = "UPDATE  doctor SET branch_id=" + doctor.getBranchId() + ",name='" + doctor.getName()
-                + "',specialization='" + doctor.getSpecialization() + "',sex='" + doctor.getSex() + "',nic="
+                + "',specialization='" + doctor.getSpecialization() + "',sex='" + doctor.getSex() + "',nic='"
                 + doctor.getnIC() + "',education_qualification='" + doctor.getEducationQualification()
-                + "',professional_qualification=" + doctor.getProfessionalQualification() + "',address='"
-                + doctor.getAddress() + "',mobile=" + doctor.getMobileNo() + "',email=" + doctor.getEmail()
-                + " WHERE user_id=" + doctor.getDoctorId();
+                + "',professional_qualification='" + doctor.getProfessionalQualification() + "',address='"
+                + doctor.getAddress() + "',mobile='" + doctor.getMobileNo() + "',email='" + doctor.getEmail()
+                + "' WHERE doctor_id=" + doctor.getDoctorId();
         try {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
