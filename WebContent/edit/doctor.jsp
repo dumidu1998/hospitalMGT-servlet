@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="model.Doctor"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.DoctorDAO"%>
 <%@page import="dao.BranchDAO"%>
@@ -36,12 +37,7 @@
 	Connection conn = dbconn.get_connection();
 	BranchDAO branchDAO = new BranchDAO(conn);
 	DoctorDAO doctorDAO = new DoctorDAO(conn);
-	ResultSet rsDoctors = null;
-	if ((Integer) session.getAttribute("role") == 1) {
-		rsDoctors = doctorDAO.getAll();
-	} else {
-		rsDoctors = doctorDAO.getAllbyBranch((Integer) session.getAttribute("branch_id"));
-	}
+	Doctor doctor = doctorDAO.getADoctorById(request.getParameter("id"));
 	ResultSet rs = branchDAO.getAll();
 	%>
 	<div class="sidebar">
@@ -155,7 +151,8 @@
 		<div class="wrapper mt-lg-3">
 
 			<div class="formContainer">
-				<form action="../doctor" method="POST">
+				<form action="../editdoctor" method="POST">
+				<input type="hidden" name="userid" value="<%out.print(request.getParameter("id")); %>" />
 					<div class="row centerCont">
 						<div class="col col-lg-6 col-md-10 col-xs-11">
 							<div class="row centerCont">
@@ -189,7 +186,7 @@
 									<label for="exampleFormControlInput1" class="form-label">NIC</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="nic" required
+									<input type="text" class="form-control" name="nic" required value="<%out.print(doctor.getnIC()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -204,7 +201,7 @@
 										Name</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="name" required
+									<input type="text" class="form-control" name="name" required value="<%out.print(doctor.getName()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -241,7 +238,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Contact</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="contact" required
+									<input type="text" class="form-control" name="contact" required value="<%out.print(doctor.getMobileNo()); %>"
 									pattern="\d{10}" title="Mobile Number format should be 0715854236"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
@@ -253,7 +250,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Email</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="email" class="form-control" name="email" required
+									<input type="email" class="form-control" name="email" required value="<%out.print(doctor.getEmail()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -267,7 +264,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Address</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="address" required
+									<input type="text" class="form-control" name="address" required value="<%out.print(doctor.getAddress()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -279,8 +276,8 @@
 										Qualifications</label>
 								</div>
 								<div class="col col-lg-7">
-									<textarea rows="4" cols="" class="form-control" name="eq"
-										required></textarea>
+									<textarea rows="4" cols="" class="form-control" name="eq" 
+										required><%out.print(doctor.getEducationQualification()); %></textarea>
 								</div>
 							</div>
 						</div>
@@ -292,7 +289,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Specification</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="specialization"
+									<input type="text" class="form-control" name="specialization" value="<%out.print(doctor.getSpecialization()); %>"
 										required id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -304,8 +301,8 @@
 										Qualifications</label>
 								</div>
 								<div class="col col-lg-7">
-									<textarea rows="4" cols="" class="form-control" name="pq"
-										required></textarea>
+									<textarea rows="4" cols="" class="form-control" name="pq" 
+										required><%out.print(doctor.getProfessionalQualification()); %></textarea>
 								</div>
 
 							</div>
@@ -319,61 +316,6 @@
 						</div>
 					</div>
 				</form>
-			</div>
-			<div class="tblContainer">
-				<div class="row centerCont">
-					<div class="col col-lg-11 col-md-10 col-xs-11">
-
-
-						<table class="table table-primary table-hover table-responsive">
-							<thead>
-								<tr class=" table-primary">
-									<th scope="col">Name</th>
-									<th scope="col">Branch</th>
-									<th scope="col">Contact Number</th>
-									<th scope="col">Specialization</th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<%
-								while (rsDoctors.next()) {
-								%>
-								<tr class="table-light">
-									<th scope="row"><%out.println(rsDoctors.getString("name"));%></th>
-									<td><%out.println(rsDoctors.getString("branch_name"));%></td>
-									<td><%out.println(rsDoctors.getString("mobile"));%></td>
-									<td><%out.println(rsDoctors.getString("specialization"));%></td>
-									<td>
-										<ul class="flexList">
-											<li><a
-												href="../edit/doctor.jsp?id=<%out.println(rsDoctors.getInt("doctor_id"));%>">
-													<button
-														<%if ((Integer) session.getAttribute("role") == 3)
-	out.print("disabled");%>>
-														<i class="far fa-edit"></i>
-													</button>
-											</a></li>
-											<li><a
-												href="../doctor?id=<%out.println(rsDoctors.getInt("doctor_id"));%>">
-													<button
-														<%if ((Integer) session.getAttribute("role") == 3)
-	out.print("disabled");%>>
-														<i class="far fa-trash-alt"></i>
-													</button></li>
-											</a>
-										</ul>
-									</td>
-								</tr>
-								<%
-								}
-								%>
-						</table>
-
-
-
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
