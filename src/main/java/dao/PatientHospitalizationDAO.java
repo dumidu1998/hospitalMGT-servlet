@@ -18,16 +18,14 @@ public class PatientHospitalizationDAO {
     public int addData(PatientHospitalization patientHospitalization) {
         PreparedStatement ps = null;
         String query = "INSERT INTO pati_hospitalization (hospitalization_id,patient_id, reason, doctor_incharge, ward_id, remark,branch_id) VALUES (NULL, "
-                + patientHospitalization.getPatientId() + ", '" + patientHospitalization.getReason() + "'', "
+                + patientHospitalization.getPatientId() + ", '" + patientHospitalization.getReason() + "', "
                 + patientHospitalization.getDoctorInChargeId() + ", " + patientHospitalization.getWardId() + ", '"
                 + patientHospitalization.getRemark() + "'," + patientHospitalization.getBranchId() + " );";
         try {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,7 +54,22 @@ public class PatientHospitalizationDAO {
 
     public ResultSet getAll() {
         PreparedStatement ps = null;
-        String query = "SELECT * FROM pati_hospitalization";
+        String query = "SELECT *,w.name as ward_name,pa.name as p_name FROM pati_hospitalization p INNER JOIN ward w ON w.ward_id=p.ward_id INNER JOIN branch b ON b.branch_id=p.branch_id INNER JOIN patient pa ON pa.patient_id=p.patient_id";
+        try {
+            ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ResultSet getAllbyBranch(int idd) {
+        PreparedStatement ps = null;
+        String query = "SELECT *,w.name as ward_name,pa.name as p_name FROM pati_hospitalization p INNER JOIN ward w ON w.ward_id=p.ward_id INNER JOIN branch b ON b.branch_id=p.branch_id INNER JOIN patient pa ON pa.patient_id=p.patient_id WHERE p.branch_id="+idd;
         try {
             ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -83,9 +96,7 @@ public class PatientHospitalizationDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();

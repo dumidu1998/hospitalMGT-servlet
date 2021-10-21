@@ -25,9 +25,7 @@ public class PatientDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,9 +91,7 @@ public class PatientDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
