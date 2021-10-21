@@ -12,13 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.DoctorDAO;
 import dao.LoginDAO;
-import dao.PatientDAO;
 import dao.UserDAO;
 import model.Doctor;
-import model.Patient;
 import model.User;
 
-@WebServlet("/patient")
+@WebServlet("/doctor")
 public class DoctorAdd extends HttpServlet {
 
 	@Override
@@ -26,9 +24,9 @@ public class DoctorAdd extends HttpServlet {
 		Conn conn= new Conn();
 		Connection dbConnection;
 		dbConnection=conn.get_connection();
-		PatientDAO patientDAO = new PatientDAO(dbConnection);
-		patientDAO.del(req.getParameter("id"));
-		resp.sendRedirect("registration/patientRegister.jsp");
+		DoctorDAO doctorDAO = new DoctorDAO(dbConnection);
+		doctorDAO.del(req.getParameter("id"));
+		resp.sendRedirect("registration/doctorRegister.jsp");
 	}
 
 	@Override
@@ -38,15 +36,16 @@ public class DoctorAdd extends HttpServlet {
 		Connection dbConnection;
 		dbConnection=conn.get_connection();
 		
-		PatientDAO patientDAO = new PatientDAO(dbConnection);
+		DoctorDAO doctorDAO = new DoctorDAO(dbConnection);
 
-		Patient newPatient = null;//new Patient(0, getServletName(), null, getServletInfo(), getServletInfo(), 0, getServletInfo(), getServletName(), getServletInfo())
-		int ret = patientDAO.addData(newPatient);
+		Doctor newDoctor = new Doctor(0,Integer.parseInt(req.getParameter("branch")) , req.getParameter("name"), req.getParameter("specialization"), req.getParameter("gender"), req.getParameter("nic"), req.getParameter("eq"), req.getParameter("pq"), req.getParameter("address"), req.getParameter("contact"), req.getParameter("email"));
+		PrintWriter out = resp.getWriter();
+		int ret = doctorDAO.addData(newDoctor);
 		if(ret!=0) {
-			resp.sendRedirect("registration/patientRegister.jsp");
+			resp.sendRedirect("registration/doctorRegister.jsp");
 			
 		}else {
-			resp.sendRedirect("registration/patientRegister.jsp");
+			resp.sendRedirect("registration/doctorRegister.jsp");
 		}
 		
 	}

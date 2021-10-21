@@ -1,4 +1,5 @@
 <!doctype html>
+<%@page import="model.Patient"%>
 <%@page import="dao.PatientDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.DoctorDAO"%>
@@ -35,8 +36,7 @@
 	Conn dbconn = new Conn();
 	Connection conn = dbconn.get_connection();
 	PatientDAO patientDAO = new PatientDAO(conn);
-	ResultSet rsPatients = null;
-	rsPatients = patientDAO.getAll();
+	Patient patient = patientDAO.getAUserById(request.getParameter("id"));
 	%>
 	<div class="sidebar">
 		<div
@@ -148,7 +148,8 @@
 		</div>
 		<div class="wrapper mt-lg-3">
 			<div class="formContainer ">
-				<form action="../patient" method="POST">
+				<form action="../editpatient" method="POST">
+				<input type="hidden" name="userid" value="<%out.print(request.getParameter("id")); %>" />
 					<div class="row centerCont">
 						<div class="col col-lg-6 col-md-10 col-xs-11">
 							<div class="row centerCont">
@@ -157,7 +158,7 @@
 										Name</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="name" required
+									<input type="text" class="form-control" name="name" required value="<%out.print(patient.getName()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -168,7 +169,7 @@
 									<label for="exampleFormControlInput1" class="form-label">NIC</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="nic" required
+									<input type="text" class="form-control" name="nic" required value="<%out.print(patient.getnIC()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -182,7 +183,7 @@
 										of Birth</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="date" class="form-control" name="dob" required
+									<input type="date" class="form-control" name="dob" required value="<%out.print(patient.getdOB()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -219,7 +220,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Age</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="number" class="form-control" name="age" required
+									<input type="number" class="form-control" name="age" required value="<%out.print(patient.getAge()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -230,7 +231,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Address</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="address" required
+									<input type="text" class="form-control" name="address" required value="<%out.print(patient.getAddress()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -243,7 +244,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Contact</label>
 								</div>
 								<div class="col col-lg-7">
-									<input type="text" class="form-control" name="contact" required
+									<input type="text" class="form-control" name="contact" required value="<%out.print(patient.getMobileNo()); %>"
 									pattern="\d{10}" title="Mobile Number format should be 0715854236"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
@@ -254,8 +255,8 @@
 								<div class="col col-lg-3">
 									<label for="exampleFormControlInput1" class="form-label">Email</label>
 								</div>
-								<div class="col col-lg-7">
-									<input type="email" class="form-control" name="email" required
+								<div class="col col-lg-7"> 
+									<input type="email" class="form-control" name="email" required value="<%out.print(patient.getEmail()); %>"
 										id="exampleFormControlInput1" placeholder="">
 								</div>
 							</div>
@@ -264,67 +265,12 @@
 
 					<div class="row centerCont">
 						<div class="d-grid gap-2 col-2 mx-auto pt-3">
-							<button class="btn btnSubmit btn-sm ">Create new Patient</button>
+							<button class="btn btnSubmit btn-sm ">Edit Patient</button>
 						</div>
 					</div>
 				</form>
 			</div>
-			<div class="tblContainer">
-				<div class="row centerCont">
-					<div class="col col-lg-11 col-md-10 col-xs-11">
-
-
-						<table class="table table-primary table-hover table-responsive">
-							<thead>
-								<tr class=" table-primary">
-									<th scope="col">Name</th>
-									<th scope="col">NIC</th>
-									<th scope="col">Age</th>
-									<th scope="col">Contact No.</th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-								while (rsPatients.next()) {
-								%>
-								<tr class="table-light">
-									<th scope="row"><%out.println(rsPatients.getString("name"));%></th>
-									<td><%out.println(rsPatients.getString("nic"));%></td>
-									<td><%out.println(rsPatients.getString("age"));%></td>
-									<td><%out.println(rsPatients.getString("mobile"));%></td>
-									<td>
-										<ul class="flexList">
-											<li><a
-												href="../edit/patient.jsp?id=<%out.println(rsPatients.getInt("patient_id"));%>">
-													<button
-														<%if ((Integer) session.getAttribute("role") == 3)
-	out.print("disabled");%>>
-														<i class="far fa-edit"></i>
-													</button>
-											</a></li>
-											<li><a
-												href="../patient?id=<%out.println(rsPatients.getInt("patient_id"));%>">
-													<button
-														<%if ((Integer) session.getAttribute("role") == 3)
-	out.print("disabled");%>>
-														<i class="far fa-trash-alt"></i>
-													</button></li>
-											</a>
-										</ul>
-									</td>
-								</tr>
-								<%
-								}
-								%>
-						</table>
-
-
-
-					</div>
-				</div>
-			</div>
-
+			
 		</div>
 	</div>
 

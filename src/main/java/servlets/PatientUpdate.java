@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DoctorDAO;
+import dao.PatientDAO;
 import dao.UserDAO;
 import model.Doctor;
+import model.Patient;
 import model.User;
 
 
-@WebServlet("/editdoctor")
+@WebServlet("/editpatient")
 public class PatientUpdate extends HttpServlet {
 	
 	@Override
@@ -25,15 +28,14 @@ public class PatientUpdate extends HttpServlet {
 		Connection dbConnection;
 		dbConnection=conn.get_connection();
 		
-		DoctorDAO doctorDAO = new DoctorDAO(dbConnection);
-		
-		Doctor newDoctor = new Doctor(Integer.parseInt(req.getParameter("userid")), Integer.parseInt(req.getParameter("branch")),req.getParameter("name"),req.getParameter("specialization"),req.getParameter("gender"),req.getParameter("nic"),req.getParameter("eq"),req.getParameter("pq"),req.getParameter("address"),req.getParameter("contact"),req.getParameter("email") );
-		int ret = doctorDAO.updateUser(newDoctor);
+		PatientDAO patientDAO = new PatientDAO(dbConnection);
+		Patient newPatient = new Patient(Integer.parseInt(req.getParameter("userid")), req.getParameter("name"), Date.valueOf(req.getParameter("dob")), req.getParameter("gender"), req.getParameter("nic"),Integer.parseInt(req.getParameter("age")), req.getParameter("address"), req.getParameter("contact"), req.getParameter("email"));
+		int ret = patientDAO.updateUser(newPatient);
 		if(ret!=0) {
-			resp.sendRedirect("registration/doctorRegister.jsp");
+			resp.sendRedirect("registration/patientRegister.jsp");
 			
 		}else {
-			resp.sendRedirect("registration/doctorRegister.jsp");
+			resp.sendRedirect("registration/patientRegister.jsp");
 		}
 	}
 	
