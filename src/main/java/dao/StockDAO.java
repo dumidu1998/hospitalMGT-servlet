@@ -24,9 +24,7 @@ public class StockDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,7 +51,22 @@ public class StockDAO {
 
     public ResultSet getAll() {
         PreparedStatement ps = null;
-        String query = "SELECT * FROM stock";
+        String query = "SELECT * FROM stock s INNER JOIN medicine m ON m.medicine_id=s.medicine_id INNER JOIN branch b ON s.branch_id=b.branch_id";
+        try {
+            ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ResultSet getAllbyBranch(int idd) {
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM stock s INNER JOIN medicine m ON m.medicine_id=s.medicine_id INNER JOIN branch b ON s.branch_id=b.branch_id WHERE s.branch_id="+idd;
         try {
             ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -75,9 +88,7 @@ public class StockDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
