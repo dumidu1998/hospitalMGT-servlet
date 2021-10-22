@@ -100,4 +100,26 @@ public class MedicineDAO {
         }
         return false;
     }
+
+	public int updatePrice(int medid, float price) {
+		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+        String query = "UPDATE  medicine SET price='" + price
+                + "' WHERE medicine_id=" + medid;
+        try {
+            ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            return rs.getInt(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+		
+	}
+
 }

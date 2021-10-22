@@ -34,17 +34,19 @@ public class StockAdd extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		Conn conn = new Conn();
 		Connection dbConnection;
 		dbConnection = conn.get_connection();
-
+		MedicineDAO medDAO = new MedicineDAO(dbConnection);
+		
 		StockDAO stockDAO = new StockDAO(dbConnection);
+		
+		
 		Stock stock = new Stock(0, Integer.parseInt(req.getParameter("medicine")),
 				Integer.parseInt(req.getParameter("qty")), Float.parseFloat(req.getParameter("uprice")),
 				Float.parseFloat(req.getParameter("total")), Integer.parseInt(req.getParameter("branch")));
 		int ret = stockDAO.addData(stock);
-
+		medDAO.updatePrice(Integer.parseInt(req.getParameter("medicine")),Float.parseFloat(req.getParameter("uprice")));
 		if (ret != 0) {
 			resp.sendRedirect("stockmgmt.jsp");
 

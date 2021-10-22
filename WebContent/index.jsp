@@ -1,5 +1,5 @@
 <head> 
-<% //TODO if(session.getAttribute("branch_id")!=null ||session.getAttribute("role")!=null||session.getAttribute("email")!=null)response.sendRedirect("home.jsp"); %>
+<% if(session.getAttribute("branch_id")!=null ||session.getAttribute("role")!=null||session.getAttribute("email")!=null)response.sendRedirect("home.jsp"); %>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"

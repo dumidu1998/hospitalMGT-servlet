@@ -7,17 +7,17 @@ import java.sql.SQLException;
 
 import model.MedicineIssue;
 
-public class medicineIssueDAO {
+public class MedicineIssueDAO {
     public String table = "medicine_issue";
     Connection connection;
 
-    public medicineIssueDAO(Connection connection) {
+    public MedicineIssueDAO(Connection connection) {
         this.connection = connection;
     }
 
     public int addData(MedicineIssue medicineIssue) {
         PreparedStatement ps = null;
-        String query = "INSERT INTO medicine_issue (issue_id, hospitalization_id, medicine_id, qty) VALUES (NULL, "
+        String query = "INSERT INTO medicine_issue (issue_id, hosipitalization_id, medicine_id, qty) VALUES (NULL, "
                 + medicineIssue.getHospitalizationId() + ", " + medicineIssue.getMedicineId() + ", "
                 + medicineIssue.getQty() + ");";
         try {
@@ -65,10 +65,25 @@ public class medicineIssueDAO {
         }
         return null;
     }
+    
+    public ResultSet getAllByHospitalizationId(int idd) {
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM medicine_issue mi INNER JOIN medicine m ON m.medicine_id=mi.medicine_id";
+        try {
+            ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public int updateUser(MedicineIssue medicineIssue) {
         PreparedStatement ps = null;
-        String query = "UPDATE  medicine_issue SET hospitalization_id=" + medicineIssue.getHospitalizationId()
+        String query = "UPDATE  medicine_issue SET hosipitalization_id=" + medicineIssue.getHospitalizationId()
                 + ",medicine_id=" + medicineIssue.getMedicineId() + ",qty=" + medicineIssue.getQty()
                 + " WHERE issue_id=" + medicineIssue.getMedicineIssueId();
         try {

@@ -6,6 +6,11 @@
 <%
 if ((Integer) session.getAttribute("role") == 2)
 %>
+<%
+if (session.getAttribute("branch_id") == null || session.getAttribute("role") == null
+		|| session.getAttribute("email") == null)
+	response.sendRedirect("index.jsp");
+%>
 <!doctype html>
 <html lang="en">
 
@@ -91,13 +96,9 @@ if ((Integer) session.getAttribute("role") == 2)
 						class="ms-1 d-none d-sm-inline">Payments</span></a>
 					<ul class="collapse nav flex-column ms-1" id="submenu2"
 						data-bs-parent="#menu">
-						<li class="w-100"><a href="../payment/payment1.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">Bill
-									Payment</span> 1
-						</a></li>
-						<li><a href="../payment/payment2.jsp" class="nav-link px-0">
-								<span class="d-none d-sm-inline">Bill Payment</span> 2
-						</a></li>
+						<li class="w-100"><a href="payment1.jsp"
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Make
+									Bill Payment</span></a></li>
 					</ul></li>
 				<!-- <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -135,17 +136,15 @@ if ((Integer) session.getAttribute("role") == 2)
 					id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="https://github.com/mdo.png" alt="hugenerd" width="30"
 					height="30" class="rounded-circle"> <span
-					class="d-none d-sm-inline mx-1">loser</span>
+					class="d-none d-sm-inline mx-1">User</span>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark text-small shadow"
 					aria-labelledby="dropdownUser1">
-					<li><a class="dropdown-item" href="#">New project...</a></li>
-					<li><a class="dropdown-item" href="#">Settings</a></li>
 					<li><a class="dropdown-item" href="#">Profile</a></li>
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="#">Sign out</a></li>
+					<li><a class="dropdown-item" href="../logout">Sign out</a></li>
 				</ul>
 			</div>
 		</div>

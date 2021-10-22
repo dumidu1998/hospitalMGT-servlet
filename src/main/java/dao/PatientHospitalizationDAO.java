@@ -32,10 +32,26 @@ public class PatientHospitalizationDAO {
 		}
 		return 0;
 	}
+	
+	public String getUserName(int id) {
+		PreparedStatement ps = null;
+		String query = "SELECT * FROM pati_hospitalization ph INNER JOIN patient p ON p.patient_id=ph.patient_id WHERE hospitalization_id = " + id + ";";
+		
+		try {
+			ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getString("name");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return " ";
+	}
 
 	public PatientHospitalization getAUserById(String id) {
 		PreparedStatement ps = null;
-		String query = "SELECT * FROM " + table + "  WHERE ward_id = " + id + ";";
+		String query = "SELECT * FROM pati_hospitalization ph INNER JOIN patient p ON p.patient_id=ph.patient_id WHERE hospitalization_id = " + id + ";";
 		try {
 			ps = connection.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
