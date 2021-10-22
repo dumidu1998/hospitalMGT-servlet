@@ -26,9 +26,7 @@ public class BranchTransferDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -44,7 +42,7 @@ public class BranchTransferDAO {
             ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            BranchTransfer branchTransfer = new BranchTransfer(rs.getInt("transfer_id"), rs.getString("reason"),
+            BranchTransfer branchTransfer = new BranchTransfer(rs.getInt("transfer_id"),rs.getInt("hospitalization_id"), rs.getString("reason"),
                     rs.getDate("date"), rs.getInt("transferred_branch"), rs.getInt("source_branch"),
                     rs.getInt("appointed_doctor"), rs.getString("remark"));
             return branchTransfer;
@@ -80,9 +78,7 @@ public class BranchTransferDAO {
             ps = connection.prepareStatement(query);
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();

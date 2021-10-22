@@ -11,9 +11,10 @@ public class BranchTransfer {
 	private int sourceBranch;
 	private int appointedDoctor;
 	private String remark;
+	private int hospitalizationId;
 
-	public BranchTransfer(int transferId, String reason, Date dateofTransfer, int transferredBranch, int sourceBranch,
-			int appointedDoctor, String remark) {
+	public BranchTransfer(int transferId, int hospitalizationId, String reason, Date dateofTransfer,
+			int transferredBranch, int sourceBranch, int appointedDoctor, String remark) {
 		this.transferId = transferId;
 		this.reason = reason;
 		this.dateofTransfer = dateofTransfer;
@@ -21,10 +22,19 @@ public class BranchTransfer {
 		this.sourceBranch = sourceBranch;
 		this.appointedDoctor = appointedDoctor;
 		this.remark = remark;
+		this.hospitalizationId = hospitalizationId;
 	}
 
 	public int getSourceBranch() {
 		return sourceBranch;
+	}
+
+	public int getHospitalizationId() {
+		return hospitalizationId;
+	}
+
+	public void setHospitalizationId(int hospitalizationId) {
+		this.hospitalizationId = hospitalizationId;
 	}
 
 	public void setSourceBranch(int sourceBranch) {
