@@ -136,10 +136,10 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 			<h2>Welcome to Hospital Management System</h2>
 			
 			
-			<h3 class="ms-5 mt-5">Current Hospitalized Patient Count - 12</h3>
+			<h3 class="ms-5 mt-5">Current Hospitalized Patient Count - 6</h3>
 			<h3 class="ms-5 mt-5">Registered Patient Count - 12</h3>
-			<h3 class="ms-5 mt-5">Doctors Count - 12</h3>
-			<h3 class="ms-5 mt-5">ward Count - 12</h3>
+			<h3 class="ms-5 mt-5">Doctors Count - 8</h3>
+			<h3 class="ms-5 mt-5">ward Count - 28</h3>
 		</div>
 	</div>
 </body>
