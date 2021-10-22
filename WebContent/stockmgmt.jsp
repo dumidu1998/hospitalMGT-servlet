@@ -6,7 +6,11 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="servlets.Conn"%>
 <html lang="en">
-
+<%
+if (session.getAttribute("branch_id") == null || session.getAttribute("role") == null
+		|| session.getAttribute("email") == null)
+	response.sendRedirect("index.jsp");
+%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
