@@ -1,1 +1,0 @@
-# hospitalMGT-servlet
