@@ -40,6 +40,3 @@ Then follow the below steps
 
 	Login username - dumi@g.com     password - 123123
 
-#######################################################
-ps - some ss are attached. check the zip on whatsapp#########
-#######################################################
