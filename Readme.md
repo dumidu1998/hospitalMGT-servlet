@@ -1,15 +1,15 @@
-#### Importing the Database
-- 1. Find the file attached named hms.sql and import it to the MYSQL server (By using the phpmyadmin or commandline)
+## Importing the Database
+-  Find the file attached named hms.sql and import it to the MYSQL server (By using the phpmyadmin or commandline)
  
 
-#### Requirements
+## Requirements
 MYSQL SERVER on PORT 3306
 Eclipse for JAVA EE Developers
 Apache Tomcat V8.5
 
 
-#### First yoou should have installed apache Tomcat V8.5
-#### Apache Tomcat V8.5 can be insalled using Eclipse easily
+## First yoou should have installed apache Tomcat V8.5
+## Apache Tomcat V8.5 can be insalled using Eclipse easily
 1. Click on server tab and Right click on it. 
 2. Click New and choose 'Tomcat V8.5' from list
 3. Click add button infront of 'Server Runtime Environment'
@@ -17,7 +17,7 @@ Apache Tomcat V8.5
 5. After insall success, click finish and Click Finish on the next window
 
  
-#### Then follow the below steps
+## Then follow the below steps
 
 1. Open the Project in Eclipse for JAVA EE Developers
 
