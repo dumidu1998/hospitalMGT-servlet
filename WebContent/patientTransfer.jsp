@@ -34,7 +34,7 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 <link rel="stylesheet" href="css/hospital.css">
 <title>Hospital MGT</title>
 </head>
-
+//transfer
 <body class="colBg">
 	<%
 	Conn dbconn = new Conn();
