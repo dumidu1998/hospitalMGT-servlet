@@ -155,8 +155,8 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 	</div>
 	<div class="main-content">
 		<div class="topic">
-			<h2>
-				Stock Management
+				<h2>
+					Stock Management
 				</hh2>
 		</div>
 		<div class="wrapper mt-lg-3">
@@ -279,6 +279,7 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 								</tr>
 							</thead>
 							<tbody>
+							<!--  MYSQL stocks get								 -->
 							<%
 								while (rsStocks.next()) {
 								%>
@@ -302,6 +303,7 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 									</td>
 								</tr>
 								<%} %>
+							<!-- 	MYSQL stocks get end							 -->
 						</table>
 					</div>
 				</div>
@@ -329,3 +331,5 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 	}
 </script>
 l>
+	
+	
