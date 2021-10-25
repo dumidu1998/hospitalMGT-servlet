@@ -27,7 +27,7 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 <link rel="stylesheet" href="css/hospital.css">
 <title>HOSPITAL MGT</title>
 </head>
-
+//content
 <body class="colBg">
 	<div class="sidebar">
 		<div
