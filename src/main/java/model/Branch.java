@@ -1,20 +1,20 @@
 package model;
 
 public class Branch {
-	private int branchId;
+	private int bId;
 	private String branchName;
 
-	public Branch(int branchId, String branchName) {
-		this.branchId = branchId;
+	public Branch(int bId, String branchName) {
+		this.bId = bId;
 		this.branchName = branchName;
 	}
 
 	public int getBranchId() {
-		return branchId;
+		return bId;
 	}
 
 	public void setBranchId(int branchId) {
-		this.branchId = branchId;
+		this.bId = bId;
 	}
 
 	public String getBranchName() {
