@@ -8,6 +8,7 @@ public class Stock {
 	private float total;
 	private int branchId;
 
+	//Parameterized Constructor
 	public Stock(int stockId, int medicineId, int qty, float unitPrice, float total, int branchId) {
 		this.stockId = stockId;
 		this.medicineId = medicineId;
