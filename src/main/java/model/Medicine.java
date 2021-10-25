@@ -8,6 +8,7 @@ public class Medicine {
 	private float price;
 	private String remark;
 
+	//Parameterized Constructor
 	public Medicine(int medicineId, String brandName, String medicinename, String type, float price, String remark) {
 		this.medicineId = medicineId;
 		this.brandName = brandName;
