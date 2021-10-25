@@ -4,6 +4,7 @@ public class Branch {
 	private int branchId;
 	private String branchName;
 
+	//Parameterized Constructor
 	public Branch(int branchId, String branchName) {
 		this.branchId = branchId;
 		this.branchName = branchName;
