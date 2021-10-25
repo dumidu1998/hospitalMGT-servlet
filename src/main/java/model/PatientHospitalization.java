@@ -15,6 +15,7 @@ public class PatientHospitalization {
 	private String remark;
 	private int branchId;
 
+	//Parameterized Constructor
 	public PatientHospitalization(int hospitalizationId, int patientId, String reason, int doctorInChargeId,
 			Date admittedDate, Date dischargedDate, int wardId, int noOfDays, String remark, int branchId) {
 		this.hospitalizationId = hospitalizationId;
