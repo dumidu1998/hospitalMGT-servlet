@@ -72,27 +72,27 @@ if (session.getAttribute("branch_id") == null || session.getAttribute("role") ==
 					<ul class="collapse nav flex-column ms-1" id="submenu1"
 						data-bs-parent="#menu">
 						<li class="w-100"><a href="registration/patientRegister.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">Patient
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Patients
 									Management</span>
 						</a></li>
 						<li><a href="registration/doctorRegister.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">Doctor
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Doctors
 									Management</span></a></li>
 						<li><a href="registration/wardRegister.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">Ward
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Wards
 									Management</span></a></li>
 						<li><a href="registration/branchRegister.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">Branch
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Branches
 									Management</span></a></li>
 						<li><a href="registration/userRegister.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">User
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Users
 									Management</span></a></li>
 						<li><a href="registration/medicineRegister.jsp"
-							class="nav-link px-0"> <span class="d-none d-sm-inline">Medicine
+							class="nav-link px-0"> <span class="d-none d-sm-inline">Medicines
 									Management</span></a></li>
 					</ul></li>
 				<li><a href="stockmgmt.jsp" class="nav-link px-0 align-middle">
-						<i class="fas fa-cubes"></i> <span class="ms-1 d-none d-sm-inline">Stock</span>
+						<i class="fas fa-cubes"></i> <span class="ms-1 d-none d-sm-inline">Stocks</span>
 				</a></li>
 				<li><a href="#submenu2" data-bs-toggle="collapse"
 					class="nav-link px-0 align-middle "> <i
